@@ -1,6 +1,7 @@
 class elasticsearch (
   $package                                                           = $::elasticsearch::config::package,
   $package_ensure                                                    = $::elasticsearch::config::package_ensure,
+  $ipv6                                                              = true,
   $group                                                             = $::elasticsearch::config::group,
   $user                                                              = $::elasticsearch::config::user,
   $service                                                           = $::elasticsearch::config::service,

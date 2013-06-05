@@ -39,7 +39,11 @@ ES_HEAP_SIZE=<%= @es_max_mem %>
 #ES_DIRECT_SIZE=
 
 # Additional Java OPTS
-#ES_JAVA_OPTS=
+<% if !@ipv6 -%>
+ES_JAVA_OPTS="-Djava.net.preferIPv4Stack=true"
+<% else -%>
+#ES_JAVA_OPTS=""
+<% end -%>
 
 # Maximum number of open files
 MAX_OPEN_FILES=65535
