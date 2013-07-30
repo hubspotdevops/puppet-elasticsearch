@@ -99,7 +99,7 @@ class elasticsearch::config {
     'file'              => {
       'type'              => 'dailyRollingFile',
       'file'              => '${path.logs}/${cluster.name}.log',
-      'datePattern'       => "'.'yyyy-MM-dd",
+      'datePattern'       => "\"'.'yyyy-MM-dd\"",
       'layout'            => {
         'type'              => 'pattern',
         'conversionPattern' => '"[%d{ISO8601}][%-5p][%-25c] %m%n"',
