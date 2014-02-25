@@ -7,6 +7,7 @@ class elasticsearch (
   $service                                                           = $::elasticsearch::config::service,
   $service_ensure                                                    = $::elasticsearch::config::service_ensure,
   $service_enable                                                    = $::elasticsearch::config::service_enable,
+  $service_restart                                                   = $::elasticsearch::config::service_restart,
   $my_class                                                          = $::elasticsearch::config::my_class,
   $conf_file_sysconfig                                               = $::elasticsearch::config::conf_file_sysconfig,
   $conf_file_sysconfig_template                                      = $::elasticsearch::config::conf_file_sysconfig_template,
@@ -109,7 +110,6 @@ class elasticsearch (
     },
     source  => $conf_file_sysconfig_source,
     require => Package[$package],
-    notify  => Service[$service],
   }
 
   file { $conf_file_logging:
@@ -123,7 +123,6 @@ class elasticsearch (
     },
     source  => $conf_file_logging_source,
     require => Package[$package],
-    notify  => Service[$service],
   }
 
   file { $conf_file_elasticsearch:
@@ -137,11 +136,21 @@ class elasticsearch (
     },
     source  => $conf_file_elasticsearch_source,
     require => Package[$package],
-    notify  => Service[$service],
   }
 
   if $my_class {
     class { $my_class: }
+  }
+
+  # Notify the service if $service_restart or simply set a requirement.
+  if $service_restart == true {
+    File[$conf_file_sysconfig] ~> Service[$service]
+    File[$conf_file_logging] ~> Service[$service]
+    File[$conf_file_elasticsearch] ~> Service[$service]
+  } else {
+    File[$conf_file_sysconfig] -> Service[$service]
+    File[$conf_file_logging] -> Service[$service]
+    File[$conf_file_elasticsearch] -> Service[$service]
   }
 
 }

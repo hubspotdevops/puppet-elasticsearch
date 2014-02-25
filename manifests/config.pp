@@ -10,6 +10,7 @@ class elasticsearch::config {
   $service                                                           = 'elasticsearch'
   $service_ensure                                                    = 'running'
   $service_enable                                                    = true
+  $service_restart                                                   = true
 
   $conf_dir                                                          = '/etc/elasticsearch'
 
