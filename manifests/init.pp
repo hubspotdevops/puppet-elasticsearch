@@ -76,7 +76,9 @@ class elasticsearch (
   $conf_elasticsearch_additional_params                              = $::elasticsearch::config::conf_elasticsearch_additional_params,
   $logging_rootlogger                                                = $::elasticsearch::config::logging_rootlogger,
   $logging_loggers                                                   = $::elasticsearch::config::logging_loggers,
-  $logging_appenders                                                 = $::elasticsearch::config::logging_appenders,) inherits ::elasticsearch::config {
+  $logging_appenders                                                 = $::elasticsearch::config::logging_appenders
+) inherits ::elasticsearch::config {
+
   package { $package: ensure => $package_ensure, }
 
   service { $service:
