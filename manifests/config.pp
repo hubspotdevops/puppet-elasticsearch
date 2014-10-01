@@ -35,6 +35,7 @@ class elasticsearch::config {
 
   $conf_cluster_name                                                 = undef
   $conf_node_name                                                    = $::fqdn
+  $conf_node_availability_zone                                       = undef
   $conf_node_master                                                  = undef
   $conf_node_data                                                    = undef
   $conf_node_max_local_storage_nodes                                 = undef

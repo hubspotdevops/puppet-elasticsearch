@@ -97,6 +97,10 @@ node.data: <%= @conf_node_data %>
 #
 # node.rack: rack314
 
+<% if @conf_node_availability_zone %>
+node.availability_zone: <%= @conf_node_availability_zone %>
+<% end %>
+
 # By default, multiple nodes are allowed to start from the same installation location
 # to disable it, set the following:
 <% if @conf_node_max_local_storage_nodes -%>
