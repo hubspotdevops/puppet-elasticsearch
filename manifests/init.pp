@@ -26,6 +26,7 @@ class elasticsearch (
   $conf_file_elasticsearch_source                                    = $::elasticsearch::config::conf_file_elasticsearch_source,
   $conf_cluster_name                                                 = $::elasticsearch::config::conf_cluster_name,
   $conf_node_name                                                    = $::elasticsearch::config::conf_node_name,
+  $conf_node_availability_zone                                       = $::elasticsearch::config::conf_node_availability_zone,
   $conf_node_master                                                  = $::elasticsearch::config::conf_node_master,
   $conf_node_data                                                    = $::elasticsearch::config::conf_node_data,
   $conf_node_max_local_storage_nodes                                 = $::elasticsearch::config::conf_node_max_local_storage_nodes,
