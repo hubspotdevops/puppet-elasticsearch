@@ -32,4 +32,4 @@ description 'Requires elasticsearch rpms built using spec files provided by http
     }
   }'
 dependency 'puppetlabs/stdlib', '>=2.2.1'
-dependency 'ripienaar/concat', '>=0.1.0'
+dependency 'puppetlabs/concat', '>= 1.0.0'
